@@ -1,1 +1,21 @@
-<p>product-card works!</p>
+<article class="product-card" [class.low-stock]="isLowStock" [class.good-stock]="!isLowStock">
+	<div class="image-wrap">
+		<img [src]="product.image" [alt]="product.name" loading="lazy" />
+	</div>
+
+	<div class="card-content">
+		<div class="title-row">
+			<h3>{{ product.name }}</h3>
+			<span class="price-tag">{{ product.price | currencyFormatter }}</span>
+		</div>
+
+		<p class="description">{{ product.description }}</p>
+
+		<div class="meta-row">
+			<span class="time-pill">Added {{ product.addedDate | timeAgo }}</span>
+			<span class="stock-pill">Stock: {{ product.stockCount }}</span>
+		</div>
+
+		<app-star-rating [rating]="product.rating" (rated)="onRateProduct($event)" />
+	</div>
+</article>
