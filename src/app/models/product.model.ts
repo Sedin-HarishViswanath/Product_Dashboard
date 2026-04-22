@@ -7,4 +7,5 @@ export interface Product {
   addedDate: Date;
   rating: number;
   image: string;
+
 }
